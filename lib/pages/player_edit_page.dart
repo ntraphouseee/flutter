@@ -86,48 +86,46 @@ class _PlayerEditPageState extends State<PlayerEditPage> {
   }
 
   void _savePlayer() {
-  if (nameController.text.isEmpty ||
-      positionController.text.isEmpty ||
-      numberController.text.isEmpty ||
-      imageController.text.isEmpty) {
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: const Text('Error'),
-        content: const Text('Semua field harus diisi!'),
-        actions: [
-          TextButton(
-            onPressed: () {
-              // Kosongkan semua field kecuali nomor punggung
-              nameController.clear();
-              positionController.clear();
-              imageController.clear();
-              Navigator.of(context).pop();
-            },
-            child: const Text('OK'),
-          ),
-        ],
-      ),
+    if (nameController.text.isEmpty ||
+        positionController.text.isEmpty ||
+        numberController.text.isEmpty ||
+        imageController.text.isEmpty) {
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: const Text('Error'),
+          content: const Text('Semua field harus diisi!'),
+          actions: [
+            TextButton(
+              onPressed: () {
+                nameController.clear();
+                positionController.clear();
+                imageController.clear();
+                Navigator.of(context).pop();
+              },
+              child: const Text('OK'),
+            ),
+          ],
+        ),
+      );
+      return;
+    }
+
+    final updated = Player(
+      name: nameController.text,
+      position: positionController.text,
+      number: int.tryParse(numberController.text) ?? 0,
+      image: imageController.text,
     );
-    return;
+
+    if (index >= 0) {
+      controller.updatePlayer(index, updated);
+    } else {
+      controller.addPlayer(updated);
+    }
+
+    Get.back();
   }
-
-  final updated = Player(
-    name: nameController.text,
-    position: positionController.text,
-    number: int.tryParse(numberController.text) ?? 0,
-    image: imageController.text,
-  );
-
-  if (index >= 0) {
-    controller.updatePlayer(index, updated);
-  } else {
-    controller.addPlayer(updated);
-  }
-
-  Get.back();
-}
-
 
   Widget _buildInputField({
     required TextEditingController controller,

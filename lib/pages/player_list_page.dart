@@ -11,7 +11,7 @@ class PlayerListPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Tampilkan snackbar setelah build selesai (lebih aman)
+    // Tampilkan snackbar setelah build selesai
     WidgetsBinding.instance.addPostFrameCallback((_) {
       final args = Get.arguments;
       if (args != null && args['fromCalculator'] == true) {
@@ -86,10 +86,13 @@ class PlayerListPage extends StatelessWidget {
                     IconButton(
                       icon: const Icon(Icons.edit, color: Colors.blue),
                       onPressed: () {
-                        Get.toNamed(AppRoutes.playerEdit, arguments: {
-                          'index': index,
-                          'player': player,
-                        });
+                        Get.toNamed(
+                          AppRoutes.playerEdit,
+                          arguments: {
+                            'index': index,
+                            'player': player,
+                          },
+                        );
                       },
                     ),
                     IconButton(

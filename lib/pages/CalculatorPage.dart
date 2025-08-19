@@ -80,15 +80,15 @@ class CalculatorPage extends StatelessWidget {
               );
             }),
             const SizedBox(height: 24),
-            CustomButton(
-              textColor: Colors.white,
-              textt: "Move to Football Players",
-              press: () {
-                calculatorController.clear();
-                Get.toNamed(AppRoutes.playerList);
-              },
-              color: const Color.fromARGB(255, 111, 112, 111),
-            ),
+            // CustomButton(
+            //   textColor: Colors.white,
+            //   textt: "Move to Football Players",
+            //   press: () {
+            //     calculatorController.clear();
+            //     Get.toNamed(AppRoutes.playerList);
+            //   },
+            //   color: const Color.fromARGB(255, 111, 112, 111),
+            // ),
           ],
         ),
       ),

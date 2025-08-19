@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:pemain_app/pages/bottom_nav_page.dart';
 import 'package:pemain_app/pages/player_edit_page.dart';
 import 'package:pemain_app/pages/player_list_page.dart';
 import 'package:pemain_app/pages/CalculatorPage.dart';
@@ -18,5 +19,7 @@ class AppPages {
       name: AppRoutes.playerEdit,
       page: () => const PlayerEditPage(), // ✅ Versi tanpa parameter langsung
     ),
+    GetPage(name: AppRoutes.bottomNavPage,
+    page: () => BottomNavPage()),
   ];
 }

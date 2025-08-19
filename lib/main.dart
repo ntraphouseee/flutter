@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart'; // Ganti dari get_navigation agar lengkap
-import 'package:pemain_app/pages/CalculatorPage.dart';
-import 'package:pemain_app/login_page.dart';
+import 'package:get/get.dart';
 import 'package:pemain_app/routes/pages.dart';
 import 'package:pemain_app/routes/routes.dart';
 
@@ -15,22 +13,26 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'Flutter Demo',
+      title: 'Pemain App',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
+        scaffoldBackgroundColor: const Color.fromARGB(255, 245, 245, 245),
         appBarTheme: const AppBarTheme(
           backgroundColor: Color.fromARGB(255, 111, 112, 111),
           foregroundColor: Colors.white,
         ),
       ),
-      initialRoute: AppRoutes.calculator,
+
+      // ✅ Routing GetX
+      initialRoute: AppRoutes.bottomNavPage,
       getPages: AppPages.pages,
 
-      // ✅ Tambahan penting agar overlay Snackbar muncul dengan lancar
+      // ✅ Optional enhancements
       defaultTransition: Transition.fade,
       transitionDuration: const Duration(milliseconds: 300),
-      popGesture: true,
+      popGesture: true, // Geser untuk back di iOS
     );
   }
 }
